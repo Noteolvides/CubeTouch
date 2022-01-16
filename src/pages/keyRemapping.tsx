@@ -23,7 +23,14 @@ function KeyChooser(props: SelectProps) {
     return (
         <div className="margin-top--md center colum-direction col col--3">
             <h3>{`${props.name}`}</h3>
-            <Select options={props.values} styles={customStyles}/>
+            <Select options={props.values} styles={customStyles} theme={(theme) => ({
+                ...theme,
+                borderRadius: 0,
+                colors: {
+                    ...theme.colors,
+                    primary25: 'pink',
+                },
+            })}/>
         </div>
     );
 }

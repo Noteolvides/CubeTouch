@@ -40,7 +40,7 @@ const config = {
   ],
 
   themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+  /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
         title: 'CubeTouch',
@@ -51,14 +51,27 @@ const config = {
         },
         items: [
           {
-            type: 'doc',
-            docId: 'intro',
             position: 'left',
-            label: 'Tutorial',
+            label: 'First steps',
+            to: '/firstSteps'
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            position: 'left',
+            label: 'Examples',
+            to: '/examples'
+          },
+          {
+            position: 'left',
+            label: 'Key Remapping',
+            href: '/keyRemapping'
+          },
+          {
+            position: 'left',
+            label: 'Next features',
+            to: '/nextFeatures'
+          },
+          {
+            href: 'https://github.com/noteolvides/touchCube',
             label: 'GitHub',
             position: 'right',
           },
@@ -71,43 +84,39 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
+                label: 'How to reprogram',
+                to: '/docs/intro',
+              },
+              {
+                label: 'How to Build',
                 to: '/docs/intro',
               },
             ],
           },
           {
-            title: 'Community',
+            title: 'Social Links',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
+                label: 'Instagram',
                 href: 'https://discordapp.com/invite/docusaurus',
               },
               {
-                label: 'Twitter',
+                label: 'Linkedin',
                 href: 'https://twitter.com/docusaurus',
               },
             ],
           },
           {
-            title: 'More',
+            title: 'Buy a CubeTouch',
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                label: 'Tindie',
+                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `CubeTouch-Docs. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
