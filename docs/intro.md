@@ -2,34 +2,25 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Welcome to the docs
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Let's start learning about **CubeTouch** in less than 5 minutes.
 
 ## Getting Started
 
-Get started by **creating a new site**.
+You can get you own CubeTouch in  **[Tindie](https://docusaurus.new)** there two versions available the already build  one, or you can build it yourself.
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+If you have gotten build it your shelf version you can check **[here](https://docusaurus.new)** the video and instructions in how to build it.
 
-## Generate a new site
+Once you have your device ready lest start seeing what it can do.
 
-Generate a new Docusaurus site using the **classic template**:
+## Features
 
-```shell
-npm init docusaurus@latest my-website classic
-```
+The CubeTouch is preloaded with a default firmware that shows all the possibles capabilities of this device.
+Some of them are:
 
-## Start your site
-
-Run the development server:
-
-```shell
-cd my-website
-
-npx docusaurus start
-```
-
-Your site starts at `http://localhost:3000`.
-
-Open `docs/intro.md` and edit some lines: the site **reloads automatically** and displays your changes.
+- Key press emulation, for shortcuts.
+- Communication to the computer via custom HID.
+- Touch capacitive inputs.
+- Key remapping via web interface **[here](https://docusaurus.new)**
+- Cool RGB lighting (Why not 😝)

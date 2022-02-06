@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'CubeTouch',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'A easy and fun HID device',
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -53,22 +53,17 @@ const config = {
           {
             position: 'left',
             label: 'First steps',
-            to: '/firstSteps'
+            to: '/docs/intro'
           },
           {
             position: 'left',
             label: 'Examples',
-            to: '/examples'
+            to: '/docs/firstSteps/examples'
           },
           {
             position: 'left',
             label: 'Key Remapping',
             href: '/keyRemapping'
-          },
-          {
-            position: 'left',
-            label: 'Next features',
-            to: '/nextFeatures'
           },
           {
             href: 'https://github.com/noteolvides/touchCube',
