@@ -4,9 +4,7 @@ sidebar_position: 2
 
 # Know you hardware
 
-Docusaurus is a **static-site-generator** (also called **[Jamstack](https://jamstack.org/)**).
-
-It builds your site as simple **static HTML, JavaScript and CSS files**.
+CubeTouch is 
 
 ## Build your site
 

@@ -38,9 +38,7 @@ as an *Additional Boards Manager URL*.
 Now you should find a new entry *CH55x Boards* in the list at.
 
 The smarter way to start creating you own code is to read some of the examples created for the CubeTouch. You can
-check it out in the next page or **[here](https://github.com/Noteolvides/CubeTouch-Software/tree/master/CDC_KEYBOARD)**.
-
-
+check it out in the followings pages or **[here](https://github.com/Noteolvides/CubeTouch-Software/tree/master/CDC_KEYBOARD)**.
 
 ### For linux users
 

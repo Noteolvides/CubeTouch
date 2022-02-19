@@ -20,7 +20,7 @@ The CubeTouch is preloaded with a default firmware that shows all the possibles 
 Some of them are:
 
 - Key press emulation, for shortcuts.
-- Communication to the computer via custom HID.
+- Communication to the computer via WEB Serial.
 - Touch capacitive inputs.
 - Key remapping via web interface **[here](https://docusaurus.new)**
 - Cool RGB lighting (Why not 😝)
