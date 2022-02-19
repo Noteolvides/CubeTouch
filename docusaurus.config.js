@@ -9,12 +9,13 @@ const config = {
   title: 'CubeTouch',
   tagline: 'A easy and fun HID device',
   url: 'https://your-docusaurus-test-site.com',
-  baseUrl: '/CubeTouch-Docs/build/',
+  baseUrl: 'https://',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'noteolvides', // Usually your GitHub org/user name.
-  projectName: 'CubeTouch', // Usually your repo name.
+  projectName: 'CubeTouch-Docs', // Usually your repo name.
+  trailingSlash: true,
 
   presets: [
     [
