@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[690],{6539:function(s){s.exports=JSON.parse('{"allTagsPath":"/CubeTouch-Docs/blog/tags","slug":"/CubeTouch-Docs/blog/tags/hola","name":"hola","count":1,"permalink":"/CubeTouch-Docs/blog/tags/hola"}')}}]);
