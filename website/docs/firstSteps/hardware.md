@@ -4,26 +4,18 @@ sidebar_position: 2
 
 # Know you hardware
 
-CubeTouch is 
+## Pinout
 
-## Build your site
+## BOM
 
-Build your site **for production**:
+## Schematics
 
-```bash
-npm run build
-```
+## PCB'S
 
-The static files are generated in the `build` folder.
+### Top
+### Bottom
+### Left
+### Right
+### Front
+### Back
 
-## Deploy your site
-
-Test your production build locally:
-
-```bash
-npm run serve
-```
-
-The `build` folder is now served at `http://localhost:3000/`.
-
-You can now deploy the `build` folder **almost anywhere** easily, **for free** or very small cost (read the **[Deployment Guide](https://docusaurus.io/docs/deployment)**).
