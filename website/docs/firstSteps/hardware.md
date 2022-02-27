@@ -6,6 +6,8 @@ sidebar_position: 2
 
 ## Pinout
 
+## BOM
+
 ## Schematics
 
 ## PCB'S
@@ -17,4 +19,3 @@ sidebar_position: 2
 ### Front
 ### Back
 
-## BOM
