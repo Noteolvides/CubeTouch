@@ -1,0 +1,8 @@
+Reference(s),Value,LCSC,Qty
+"C1, C2, C3, C4, C5, C6, C7, C8","Capacitor 0,1uf",C14663,8
+"D1, D2, D3, D4, D5, D6",WS2812B,C139127,6
+J1,USB_C,C709357,1
+"R1, R2",Resistor 5.1K,C25905,2
+R3,Resistor 10K,C25197,1
+SW1,SW Tactile Button,C318884,1
+U1,CH554G,C114295,1
