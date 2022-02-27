@@ -13,9 +13,11 @@ const config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'noteolvides', // Usually your GitHub org/user name.
-  projectName: 'CubeTouch-Docs', // Usually your repo name.
+  organizationName: 'Noteolvides', // Usually your GitHub org/user name.
+  projectName: 'CubeTouch', // Usually your repo name.
   trailingSlash: true,
+
+
 
   presets: [
     [
