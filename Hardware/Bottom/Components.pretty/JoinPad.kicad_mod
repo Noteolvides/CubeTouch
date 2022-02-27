@@ -1,0 +1,16 @@
+(footprint "JoinPad" (version 20210722) (generator pcbnew) (layer "F.Cu")
+  (tedit 6179742C)
+  (fp_text reference "REF**" (at 0 -2 unlocked) (layer "F.SilkS") hide
+    (effects (font (size 1 1) (thickness 0.15)))
+    (tstamp 811a884d-0a54-400b-953c-c076f0a02a71)
+  )
+  (fp_text value "JoinPad" (at 0 3 unlocked) (layer "F.Fab") hide
+    (effects (font (size 1 1) (thickness 0.15)))
+    (tstamp db16b9c9-f22b-4869-bbab-32db5750d6d9)
+  )
+  (fp_text user "${REFERENCE}" (at 0 5 unlocked) (layer "F.Fab") hide
+    (effects (font (size 1 1) (thickness 0.15)))
+    (tstamp 0a459a5c-27ba-46b2-8e33-73d0175d531b)
+  )
+  (pad "1" smd rect (at 0 0 90) (size 2 3) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 1bc7f7ca-15cc-4349-8aa9-945d746a86a9))
+)
