@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[739],{893:function(u){u.exports=JSON.parse('{"allTagsPath":"/CubeTouch/blog/tags","slug":"/CubeTouch/blog/tags/docusaurus","name":"docusaurus","count":4,"permalink":"/CubeTouch/blog/tags/docusaurus"}')}}]);
