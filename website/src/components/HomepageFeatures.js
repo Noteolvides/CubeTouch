@@ -1,48 +1,49 @@
 import React from 'react';
 import clsx from 'clsx';
 import styles from './HomepageFeatures.module.css';
+import useThemeContext from '@theme/hooks/useThemeContext'; //
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
-    Svg: require('../../static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'Build it',
+    Img: require('../../static/img/FullBoards.png').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Assemble the 6 unique plates to form a universe cube by soldering the edges of each of them.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('../../static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Program it',
+    mayChange : true,
+    Img: require('../../static/img/Arduino_Logo.png').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Inside the cube is the CH552, a cheap but powerful microcontroller that can be programmed with the arduino framework.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
+    title: 'Touch it',
+    Img: require('../../static/img/FullCube.png').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Once assembled and programmed, all that remains is to touch it and enjoy the experience.
       </>
     ),
   },
 ];
 
-function Feature({Svg, title, description}) {
+function Feature({Img,mayChange, title, description}) {
+  const { isDarkTheme } = useThemeContext();
+  const change = mayChange && !isDarkTheme;
   return (
     <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} alt={title} />
+      <div className={"text--center"}>
+        <img className={styles.featureSvg}  style={change?{filter:"invert(1)"}:{}} src={Img} alt={title}/>
       </div>
       <div className="text--center padding-horiz--md">
-        <h3>{title}</h3>
+        <h2>{title}</h2>
         <p>{description}</p>
       </div>
     </div>
