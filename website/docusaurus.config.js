@@ -92,11 +92,11 @@ const config = {
               },
               {
                 label: 'Build manual',
-                to: '/docs/intro',
+                to: '/manual',
               },
               {
                 label: 'Build video',
-                to: '/docs/intro',
+                href: 'https://youtu.be/8IG3UgNzkUI',
               },
             ],
           },
@@ -105,11 +105,15 @@ const config = {
             items: [
               {
                 label: 'Instagram',
-                href: 'https://discordapp.com/invite/docusaurus',
+                href: 'https://www.instagram.com/noteolvid.es/',
               },
               {
-                label: 'Linkedin',
-                href: 'https://twitter.com/docusaurus',
+                label: 'Youtube',
+                href: 'https://www.youtube.com/channel/UCDMxDueAs81GeD3XXMcCJtw',
+              },
+              {
+                label: 'Hackaday',
+                href: 'https://hackaday.io/noteolvid.es',
               },
             ],
           },

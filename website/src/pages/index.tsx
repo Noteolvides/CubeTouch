@@ -18,7 +18,7 @@ function HomepageHeader() {
                 <p className="hero__subtitle">{siteConfig.tagline}</p>
                 <div className={styles.buttons}>
                     <Link
-                        className="button button--outline button--lg"
+                        className="button button--outline button--secondary button--lg"
                         href="https://www.tindie.com">
                         Buy your CubeTouch now!<p style={{marginBottom:"0"}}>🥳</p>
                     </Link>
@@ -45,7 +45,7 @@ export default function Home() {
     return (
         <Layout
             title={`CubeTouch`}
-            description="A easy and fun HID device">
+            description="An easy and fun HID device">
             <HomepageHeader/>
             <main>
                 <HomepageFeatures/>
@@ -55,14 +55,14 @@ export default function Home() {
                             <div className="col col--6 text--center">
                                 <h2>Promo video</h2>
                                 <iframe className="" width="560" height="315"
-                                        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                                        src="https://www.youtube.com/embed/VJH5Z2vRkU0"
                                         title="YouTube video player"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                         allowFullScreen></iframe>
                             </div>
                             <div className="col col--6 text--center">
                                 <h2>Build montage</h2>
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/8IG3UgNzkUI"
                                         title="YouTube video player"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                         allowFullScreen></iframe>
