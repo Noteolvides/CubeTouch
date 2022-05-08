@@ -9,7 +9,7 @@ const config = {
   title: 'CubeTouch',
   tagline: 'A easy and fun HID device',
   url: 'https://your-docusaurus-test-site.com',
-  baseUrl: "/CubeTouch/",
+  baseUrl: "",
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
