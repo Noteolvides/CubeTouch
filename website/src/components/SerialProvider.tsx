@@ -55,7 +55,8 @@ interface SerialProviderProps {
 const SerialProvider = ({
                             children,
                         }: PropsWithChildren<SerialProviderProps>) => {
-    const [canUseSerial] = useState(() => "serial" in navigator);
+    // const [canUseSerial] = useState(() => "serial" in navigator);
+    const [canUseSerial] = useState(true);
 
     const [portState, setPortState] = useState<PortState>("closed");
     const [hasTriedAutoconnect, setHasTriedAutoconnect] = useState(false);
