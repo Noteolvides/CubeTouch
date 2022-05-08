@@ -1,45 +1,54 @@
-export const Modifiers = [
-    {label: "MOD_LCTRL", value: 0x01},
-    {label: "MOD_LSHIFT", value: 0x02},
-    {label: "MOD_LALT", value: 0x04},
-    {label: "MOD_LMETA", value: 0x08},
-    {label: "MOD_RCTRL", value: 0x10},
-    {label: "MOD_RSHIFT", value: 0x20},
-    {label: "MOD_RALT", value: 0x40},
-    {label: "MOD_RMETA", value: 0x80},
+export interface Option {
+    label: string,
+    value: number;
+}
+
+export const Modifiers: Array<Option> = [
+    {label: "MOD_LCTRL", value: 0xE0},
+    {label: "MOD_LSHIFT", value: 0xE1},
+    {label: "MOD_LALT", value: 0xE2},
+    {label: "MOD_LMETA", value: 0xE3},
+    {label: "MOD_RCTRL", value: 0xE0},
+    {label: "MOD_RSHIFT", value: 0xE1},
+    {label: "MOD_RALT", value: 0xE2},
+    {label: "MOD_RMETA", value: 0xE3},
+]
+
+export const Empty: Array<Option> = [
+    {label: "EMPTY", value: 0x0},
 ]
 
 
-export const Letters = [
-    {label: "A", value: 0x04},
-    {label: "B", value: 0x05},
-    {label: "C", value: 0x06},
-    {label: "D", value: 0x07},
-    {label: "E", value: 0x08},
-    {label: "F", value: 0x09},
-    {label: "G", value: 0x0a},
-    {label: "H", value: 0x0b},
-    {label: "I", value: 0x0c},
-    {label: "J", value: 0x0d},
-    {label: "K", value: 0x0e},
-    {label: "L", value: 0x0f},
-    {label: "M", value: 0x10},
-    {label: "N", value: 0x11},
-    {label: "O", value: 0x12},
-    {label: "P", value: 0x13},
-    {label: "Q", value: 0x14},
-    {label: "R", value: 0x15},
-    {label: "S", value: 0x16},
-    {label: "T", value: 0x17},
-    {label: "U", value: 0x18},
-    {label: "V", value: 0x19},
-    {label: "W", value: 0x1a},
-    {label: "X", value: 0x1b},
-    {label: "Y", value: 0x1c},
-    {label: "Z", value: 0x1d},
+export const Letters: Array<Option> = [
+    {label: "a", value: 0x04},
+    {label: "b", value: 0x05},
+    {label: "c", value: 0x06},
+    {label: "d", value: 0x07},
+    {label: "e", value: 0x08},
+    {label: "f", value: 0x09},
+    {label: "g", value: 0x0a},
+    {label: "h", value: 0x0b},
+    {label: "i", value: 0x0c},
+    {label: "j", value: 0x0d},
+    {label: "k", value: 0x0e},
+    {label: "l", value: 0x0f},
+    {label: "m", value: 0x10},
+    {label: "n", value: 0x11},
+    {label: "o", value: 0x12},
+    {label: "p", value: 0x13},
+    {label: "q", value: 0x14},
+    {label: "r", value: 0x15},
+    {label: "s", value: 0x16},
+    {label: "y", value: 0x17},
+    {label: "u", value: 0x18},
+    {label: "v", value: 0x19},
+    {label: "w", value: 0x1a},
+    {label: "x", value: 0x1b},
+    {label: "y", value: 0x1c},
+    {label: "z", value: 0x1d},
 ]
 
-export const Numbers = [
+export const Numbers: Array<Option> = [
     {label: "1", value: 0x1e},
     {label: "2", value: 0x1f},
     {label: "3", value: 0x20},
@@ -52,7 +61,7 @@ export const Numbers = [
     {label: "0", value: 0x27},
 ]
 
-export const Utilities = [
+export const Utilities: Array<Option> = [
     {label: "ENTER", value: 0x28},
     {label: "ESC", value: 0x29},
     {label: "BACKSPACE", value: 0x2a},
@@ -89,7 +98,7 @@ export const Utilities = [
     {label: "VOLUMEDOWN", value: 0x81},
 ]
 
-export const Functional = [
+export const Functional: Array<Option> = [
     {label: "F1", value: 0x3a},
     {label: "F2", value: 0x3b},
     {label: "F3", value: 0x3c},
@@ -152,7 +161,7 @@ export const Functional = [
     {label: "KPEQUAL", value: 0x67},
 ]
 
-export const Media = [
+export const Media: Array<Option> = [
 
     {label: "MEDIA_PLAYPAUSE", value: 0xe8},
     {label: "MEDIA_STOPCD", value: 0xe9},
@@ -178,27 +187,31 @@ export const Media = [
 
 export const GroupedOptions = [
     {
-        label:"Modifiers",
+      label: "Empty",
+      options: Empty
+    },
+    {
+        label: "Modifiers",
         options: Modifiers
     },
     {
-        label:"Letters",
+        label: "Letters",
         options: Letters
     },
     {
-        label:"Numbers",
+        label: "Numbers",
         options: Numbers
     },
     {
-        label:"Utilities",
+        label: "Utilities",
         options: Utilities
     },
     {
-        label:"Functional",
+        label: "Functional",
         options: Functional
     },
     {
-        label:"Media",
+        label: "Media",
         options: Media
     },
 ]

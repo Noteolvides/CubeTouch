@@ -86,7 +86,11 @@ const config = {
                 to: '/docs/intro',
               },
               {
-                label: 'How to Build',
+                label: 'Build manual',
+                to: '/docs/intro',
+              },
+              {
+                label: 'Build video',
                 to: '/docs/intro',
               },
             ],
