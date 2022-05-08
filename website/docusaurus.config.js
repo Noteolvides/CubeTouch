@@ -69,6 +69,11 @@ const config = {
             href: '/keyRemapping'
           },
           {
+            position: 'left',
+            label: 'Manual',
+            to: '/manual'
+          },
+          {
             href: 'https://github.com/noteolvides/touchCube',
             label: 'GitHub',
             position: 'right',
