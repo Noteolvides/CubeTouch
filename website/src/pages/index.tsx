@@ -54,7 +54,7 @@ export default function Home() {
                         <div className="row">
                             <div className="col col--6 text--center">
                                 <h2>Promo video</h2>
-                                <iframe className="" width="560" height="315"
+                                <iframe style={{width:"inherit"}} className=""  height="315"
                                         src="https://www.youtube.com/embed/VJH5Z2vRkU0"
                                         title="YouTube video player"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -62,7 +62,7 @@ export default function Home() {
                             </div>
                             <div className="col col--6 text--center">
                                 <h2>Build montage</h2>
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/8IG3UgNzkUI"
+                                <iframe style={{width:"inherit"}} height="315" src="https://www.youtube.com/embed/8IG3UgNzkUI"
                                         title="YouTube video player"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                         allowFullScreen></iframe>
