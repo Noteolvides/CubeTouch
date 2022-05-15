@@ -256,7 +256,7 @@ const LayoutPage = () => {
                     <p className="hero__subtitle">Remap your favorites keys or commands.</p>
                     <p>{`First you have to connect to the you ${siteConfig.title}`}</p>
                     <button
-                        className={`button ${!isChrome ? "disabled" : ""} ${connected ? "button--warning" : ""} button--info button--outline button--lg`}
+                        className={`button ${connected ? "button--warning" : ""} button--info button--outline button--lg`}
                         onClick={tryConnect}> {!connected ? "Connect" : "Disconnect"}
                     </button>
                     {/*Here should be like a and explanation of the program that is the default*/}
