@@ -228,6 +228,7 @@ const LayoutPage = () => {
     const [connected, setConnected] = useState<boolean>(context.portState == "open");
     const [error, setErrorConnected] = useState<boolean>(false);
     const tryConnect = async () => {
+        console.debug("Trying to connect")
         if (!connected) {
             await context.connect().then((result) => {
                     if (result) {
