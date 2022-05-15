@@ -13,7 +13,7 @@ import React from 'react'
 // https://reillyeon.github.io/serial/#onconnect-attribute-0
 // https://codelabs.developers.google.com/codelabs/web-serial
 
-export type PortState = "closed" | "closing" | "open" | "opening";
+export type PortState = "closed" | "closing" | "open" | "opening" | "error";
 
 export type SerialMessage = {
     value: string;
@@ -23,7 +23,6 @@ export type SerialMessage = {
 type SerialMessageCallback = (message: SerialMessage) => void;
 
 export interface SerialContextValue {
-    canUseSerial: boolean;
     hasTriedAutoconnect: boolean;
     portState: PortState;
 
@@ -37,7 +36,6 @@ export interface SerialContextValue {
 }
 
 export const SerialContext = createContext<SerialContextValue>({
-    canUseSerial: false,
     hasTriedAutoconnect: false,
     connect: () => Promise.resolve(false),
     disconnect: () => Promise.resolve(false),
@@ -55,8 +53,6 @@ interface SerialProviderProps {
 const SerialProvider = ({
                             children,
                         }: PropsWithChildren<SerialProviderProps>) => {
-    // const [canUseSerial] = useState(() => "serial" in navigator);
-    const [canUseSerial] = useState(true);
 
     const [portState, setPortState] = useState<PortState>("closed");
     const [hasTriedAutoconnect, setHasTriedAutoconnect] = useState(false);
@@ -92,7 +88,7 @@ const SerialProvider = ({
      * @returns if successfully
      */
     const sendMessageToPort = async (message: Uint8Array) => {
-        if (canUseSerial && portState === "open") {
+        if (portState === "open") {
             const port = portRef.current;
             if (port) {
                 const writer = port.writable.getWriter();
@@ -155,7 +151,7 @@ const SerialProvider = ({
     };
 
     const manualConnectToPort = async () => {
-        if (canUseSerial && portState === "closed") {
+        if (portState === "closed") {
             setPortState("opening");
             const filters = [
                 // Can identify the vendor and product IDs by plugging in the device and visiting: chrome://device-log/
@@ -177,7 +173,7 @@ const SerialProvider = ({
     };
 
     const autoConnectToPort = async () => {
-        if (canUseSerial && portState === "closed") {
+        if (portState === "closed") {
             setPortState("opening");
             const availablePorts = await navigator.serial.getPorts();
             if (availablePorts.length) {
@@ -192,7 +188,7 @@ const SerialProvider = ({
     };
 
     const manualDisconnectFromPort = async () => {
-        if (canUseSerial && portState === "open") {
+        if (portState === "open") {
             const port = portRef.current;
             if (port) {
                 setPortState("closing");
@@ -257,21 +253,18 @@ const SerialProvider = ({
 
     // Tries to auto-connect to a port, if possible
     useEffect(() => {
-        if (
-            canUseSerial &&
-            !hasManuallyDisconnected &&
+        if (!hasManuallyDisconnected &&
             !hasTriedAutoconnect &&
             portState === "closed"
         ) {
             //autoConnectToPort();
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [canUseSerial, hasManuallyDisconnected, hasTriedAutoconnect, portState]);
+    }, [hasManuallyDisconnected, hasTriedAutoconnect, portState]);
 
     return (
         <SerialContext.Provider
             value={{
-                canUseSerial,
                 hasTriedAutoconnect,
                 subscribeRead: subscribe,
                 portState,
