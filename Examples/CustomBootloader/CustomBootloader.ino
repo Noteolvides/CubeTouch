@@ -10,6 +10,11 @@
   This example code is in the public domain.
 */
 
+#ifdef USER_USB_RAM
+#error "This example needs to be compiled with a Default CDC setting"
+#error "Tools--> USB Settings--> Default CDC"
+#endif
+
 void jump_to_bootloader() {
   USB_INT_EN = 0;   // USB interrupt disable
   USB_CTRL = 0x06;  // USB base control Reset

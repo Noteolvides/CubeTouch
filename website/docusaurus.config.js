@@ -16,9 +16,9 @@ const config = {
   organizationName: 'Noteolvides', // Usually your GitHub org/user name.
   projectName: 'CubeTouch', // Usually your repo name.
   trailingSlash: true,
-
-
-
+  themes: [
+    '@saucelabs/theme-github-codeblock'
+  ],
   presets: [
     [
       'classic',
@@ -132,6 +132,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+        additionalLanguages: ['cpp'],
       },
       colorMode: {
         defaultMode: 'dark',

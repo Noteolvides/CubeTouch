@@ -8,7 +8,7 @@ import {PopoverPicker} from "../components/PopoverPicker";
 import SerialProvider, {SerialContextValue, useSerial} from "../components/SerialProvider";
 import {ActionMeta,} from "react-select/dist/declarations/src/types";
 
-const facesNames: Array<string> = ["Top", "Front", "Back", "Left", "Right"]
+const facesNames: Array<string> = ["Back", "Right", "Left", "Front", "Top"]
 
 interface TouchFace {
     name: string
@@ -168,6 +168,7 @@ const MainContent = () => {
         dataToSend[5] = colorInt?.r;
         dataToSend[6] = colorInt?.g;
         dataToSend[7] = colorInt?.b;
+        console.log(dataToSend);
         context.sendMessage(dataToSend);
     }
     return (
@@ -256,7 +257,7 @@ const LayoutPage = () => {
                     <p className="hero__subtitle">Remap your favorites keys or commands.</p>
                     <p>{`First you have to connect to the you ${siteConfig.title}`}</p>
                     <button
-                        className={`button ${connected ? "button--warning" : ""} button--info button--outline button--lg`}
+                        className={`button ${connected ? "button--warning" : ""} button--info button button--lg`}
                         onClick={tryConnect}> {!connected ? "Connect" : "Disconnect"}
                     </button>
                     {/*Here should be like a and explanation of the program that is the default*/}
