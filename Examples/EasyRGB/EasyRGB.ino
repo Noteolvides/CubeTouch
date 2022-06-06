@@ -9,6 +9,11 @@
   This example code is in the public domain.
 */
 
+#ifdef USER_USB_RAM
+#error "This example needs to be compiled with a Default CDC setting"
+#error "Tools--> USB Settings--> Default CDC"
+#endif
+
 #include <WS2812.h>
 #include <stdio.h>
 

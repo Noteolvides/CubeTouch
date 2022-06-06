@@ -154,12 +154,10 @@ const SerialProvider = ({
         if (portState === "closed") {
             setPortState("opening");
             const filters = [
-                // Can identify the vendor and product IDs by plugging in the device and visiting: chrome://device-log/
-                // the IDs will be labeled `vid` and `pid`, respectively
-                // {
-                //     usbVendorId: 0x1a86,
-                //     usbProductId: 0x7523,
-                // },
+                 {
+                     usbVendorId: 0x1209,
+                     usbProductId: 0xC6BE,
+                 },
             ];
             try {
                 const port = await navigator.serial.requestPort({filters});
