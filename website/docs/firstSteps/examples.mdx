@@ -1,11 +1,21 @@
----
-sidebar_position: 3
----
+
+
 
 # Examples
 
-
 ## Custom Firmware
+Default firmware that comes preload with the package. Its main function is to use as an external keyboard with shortcuts to increase your productivity in your daily work in the computer.
+Each face is mapped with a possible combination of 3 keys, and a color to show that the keys were sent.
+These can be remapped via the [web interface](https://cubetouch.noteolvid.es/keyRemapping/) thanks to [web serial](https://web.dev/serial/).
+
+<details>
+  <summary>Check the code 🖥</summary>
+
+  ```cpp reference
+  https://github.com/Noteolvides/CubeTouch/blob/main/Examples/CustomFirmware/CustomFirmware.ino
+  ```
+
+</details>
 
 ## Easy RGB
 A simple example that receives an RGB hex value and displays it.
@@ -14,101 +24,9 @@ Send hex color to the Serial Monitor following this format (R,G,B): #0B4F02
 <details>
   <summary>Check the code 🖥</summary>
 
-
-  ```cpp title="EasyRGB/EasyRGB.ino"
-  /*
-    Easy RGB
-
-    A simple example that receives an RGB hex value and displays it
-    Send hex color following this format (R,G,B): #0B4F02
-    created 2022
-    by Noteolvides for use with CH55xduino
-
-    This example code is in the public domain.
-  */
-
-  #include <WS2812.h>
-  #include <stdio.h>
-
-  #define NUM_LEDS 6
-  #define COLOR_PER_LEDS 3
-  #define NUM_BYTES (NUM_LEDS * COLOR_PER_LEDS)
-
-  __xdata uint8_t ledData[NUM_BYTES];
-  __xdata char buffer[8];
-  uint8_t bufferPtr = 0;
-
-  void setAll(uint8_t r, uint8_t g, uint8_t b) {
-    uint8_t i;
-    for (i = 0; i < NUM_LEDS; i++) {
-      set_pixel_for_GRB_LED(ledData, i, r, g, b);
-    }
-    neopixel_show_P3_4(ledData, NUM_BYTES);
-  }
-
-  uint8_t hex2int(char hex[3]) {
-    uint8_t val = 0;
-    while (*hex) {
-      // get current character then increment
-      char byte = *hex++;
-      // transform hex character to the 4bit equivalent number, using the ascii table indexes
-      if (byte >= '0' && byte <= '9')
-        byte = byte - '0';
-      else if (byte >= 'a' && byte <= 'f')
-        byte = byte - 'a' + 10;
-      else if (byte >= 'A' && byte <= 'F')
-        byte = byte - 'A' + 10;
-      // shift 4 to make space for new digit, and add the 4 bits of the new digit
-      val = (val << 4) | (byte & 0xF);
-    }
-    return val;
-  }
-
-  void setup() {
-    pinMode(34, OUTPUT);  // LEDS PIN
-  }
-
-  void sendColors() {
-    char auxString[3];
-    uint8_t r, g, b;
-    auxString[0] = buffer[1];
-    auxString[1] = buffer[2];
-    auxString[2] = '\0';
-    r = hex2int(auxString);
-    auxString[0] = buffer[3];
-    auxString[1] = buffer[4];
-    auxString[2] = '\0';
-    g = hex2int(auxString);
-    auxString[0] = buffer[5];
-    auxString[1] = buffer[6];
-    auxString[2] = '\0';
-    b = hex2int(auxString);
-    setAll(r, g, b);
-    USBSerial_println_s("Done! Just a remainter send hex color following this format : #0B4F02");
-    USBSerial_flush();
-  }
-
-  void loop() {
-    while (USBSerial_available()) {
-      char serialChar = USBSerial_read();
-      buffer[bufferPtr] = serialChar;
-      bufferPtr++;
-      if (bufferPtr == 7) {
-        buffer[bufferPtr] = '\0';
-        bufferPtr = 0;
-        sendColors();
-      }
-      if ((serialChar == '\n') || (serialChar == '\r')) {
-        buffer[bufferPtr] = '\0';
-        bufferPtr = 0;
-        break;
-      }
-    }
-  }
-
-
+  ```cpp reference
+  https://github.com/Noteolvides/CubeTouch/blob/main/Examples/EasyRGB/EasyRGB.ino
   ```
-
 
 </details>
 
@@ -136,52 +54,9 @@ No configuration, just upload the sketch and enjoy the beautiful colors.
 <details>
   <summary>Check the code 🖥</summary>
 
-
-  ```cpp title="ChasseTest/ChasseTest.ino"
-  /*
-  Easy RGB
-
-  A simple example that no  needs configuration,
-  just upload the sketch and enjoy the beautiful colors.
-  by Noteolvides for use with CH55xduino
-
-  This example code is in the public domain.
-  */
-
-  #include <WS2812.h>
-
-  #define NUM_LEDS 6
-  #define COLOR_PER_LEDS 3
-  #define NUM_BYTES (NUM_LEDS*COLOR_PER_LEDS)
-
-  __xdata uint8_t ledData[NUM_BYTES];
-
-  void setup() {
-    pinMode(34, OUTPUT); //Possible to use other pins.
-  }
-
-  void loop() {
-
-    for (uint8_t i = 0; i < NUM_LEDS; i++) {
-      set_pixel_for_GRB_LED(ledData, i, 50, 0, 0); //Choose the color order depending on the LED you use.
-      neopixel_show_P3_4(ledData, NUM_BYTES); //Possible to use other pins.
-      delay(200);
-    }
-    for (uint8_t i = 0; i < NUM_LEDS; i++) {
-      set_pixel_for_GRB_LED(ledData, i, 0, 50, 0);
-      neopixel_show_P3_4(ledData, NUM_BYTES);
-      delay(200);
-    }
-    for (uint8_t i = 0; i < NUM_LEDS; i++) {
-      set_pixel_for_GRB_LED(ledData, i, 0, 0, 50);
-      neopixel_show_P3_4(ledData, NUM_BYTES);
-      delay(200);
-    }
-
-  }
-
+  ```cpp reference
+  https://github.com/Noteolvides/CubeTouch/blob/main/Examples/ChasseTest/ChasseTest.ino
   ```
-
 
 </details>
 
@@ -190,173 +65,30 @@ No configuration, just upload the sketch and enjoy the beautiful colors.
   <video autoPlay muted loop src={require('./assets/ChaseTest.mp4').default}/>
 </div>
 
-## Easy Touch
-
-A simple example that when a face is touch prints the face that has received input from.
+## Touch Graph
+A simple sketch that plots all the values coming from the 5 capacitive buttons.
 
 <details>
   <summary>Check the code 🖥</summary>
 
-
-  ```cpp title="EasyTouch/EasyTouch.ino"
-  /*
-  Easy Touch
-
-  A simple example that when detect a touch of a face prints the face that has received input from
-
-  created 2022
-  by Noteolvides for use with CH55xduino
-
-  This example code is in the public domain.
-  */
-  #include <TouchKey.h>
-
-
-  enum states {
-    RELEASED,
-    HOLDING,
-    LONG_HOLD,
-  };
-
-  typedef struct {
-    uint8_t history;
-    uint16_t downTime;
-  } stateBtn;
-
-  __xdata stateBtn stateButtons[5];  // Back,Right,Left,Front,Top
-  const char* face[] = {"Back", "Right", "Left", "Front", "Top"};
-
-  #define DELAY 10
-  #define LOONG_PRESS 2000
-
-  void setup() {
-    TouchKey_begin((1 << 1) | (1 << 2) | (1 << 3) | (1 << 4) |
-                   (1 << 5));  // Enable all 6 channels: TIN0(P1.0), TIN1(P1.1), TIN2(P1.4),
-                               // TIN3(P1.5), TIN4(P1.6), TIN5(P1.7)
-
-    // In most cases you don't need to adjust parameters. But if you do, test with
-    // TouchKeyTuneParameter example
-    /*
-      //refer to AN3891 MPR121 Baseline System for more details
-      TouchKey_SetMaxHalfDelta(5);      //increase if sensor value are more noisy
-      TouchKey_SetNoiseHalfDelta(2);    //If baseline need to adjust at higher rate, increase this
-      value TouchKey_SetNoiseCountLimit(10);  //If baseline need to adjust faster, increase this value
-      TouchKey_SetFilterDelayLimit(5);  //make overall adjustment slopwer
-
-      TouchKey_SetTouchThreshold(100);  //Bigger touch pad can use a bigger value
-      TouchKey_SetReleaseThreshold(80); //Smaller than touch threshold
-    */
-   for (uint8_t i = 0; i < 5; i++)
-   {
-     stateButtons[i].history = RELEASED;
-     stateButtons[i].downTime = 0;
-   }
-
-  }
-
-  void loop() {
-    TouchKey_Process();
-    uint8_t touchResult = TouchKey_Get();
-    for (uint8_t i = 0; i < 5; i++) {
-      switch (stateButtons[i].history) {
-        case RELEASED:  // Not presed before
-          if (!(touchResult & (1 << (i + 1))))
-            break;  // Not touched
-          USBSerial_print_s(face[i]);
-          USBSerial_println_s(" Has been touched");
-          stateButtons[i].history = HOLDING;  // Touch detected
-          stateButtons[i].downTime += DELAY;
-          break;
-        case HOLDING:                       // Touch detected before
-          if (!(touchResult & (1 << i + 1))) {  // Is now relesed
-            USBSerial_print_s(face[i]);
-            USBSerial_println_s(" Has been released");
-            stateButtons[i].downTime = 0;
-            stateButtons[i].history = RELEASED;
-            break;
-          }
-          stateButtons[i].downTime += DELAY;             // Keeep touching
-          if (stateButtons[i].downTime > LOONG_PRESS) {  // A long prees is detected
-            USBSerial_print_s(face[i]);
-            USBSerial_println_s(" it is still being press.");
-            stateButtons[i].downTime = 0;
-            stateButtons[i].history = LONG_HOLD;
-          }
-          break;
-        case LONG_HOLD:
-          if (!(touchResult & (1 << (i + 1)))) {
-            stateButtons[i].history = RELEASED;  // Have to wait to long press is released
-            USBSerial_print_s(face[i]);
-            USBSerial_println_s(" Has been released");
-          }
-          break;
-      }
-      USBSerial_flush();
-    }
-    delay(DELAY);
-  }
-
+  ```cpp reference
+  https://github.com/Noteolvides/CubeTouch/blob/main/Examples/TouchGraph/TouchGraph.ino
   ```
-
 
 </details>
 
-<div style={{display: "flex", justifyContent: "center"}}>
-  <video style={{width: "100%"}} autoPlay muted loop src={require('./assets/EasyTouch.mp4').default}/>
-</div>
+![Tocuh](./assets/TouchGraph.png)
+
 
 ## CDC and Keyboard
-This examples echoes next character of data it receives via the serial monitor.
+This example echoes the next character of data it receives via the serial monitor and sends as a key also the next character send.
 
 <details>
   <summary>Check the code 🖥</summary>
 
-
-  ```cpp title="CDC_KEYBOARD/CDC_KEYBOARD.ino"
-  /*
-    CDC + HID Keyboard
-
-    A simple examples echoes next character of data it receives.
-
-    created 2022
-    by Noteolvides for use with CH55xduino
-
-    This example code is in the public domain.
-  */
-
-
-  #ifndef USER_USB_RAM
-  #error "This example needs to be compiled with a USER USB setting"
-  #error "Tools--> USB Settings--> USER CODE w/148 USB Ram"
-  #endif
-
-  #include "src/CDC_KEYBOARD/USBCDC.h"
-  #include "src/CDC_KEYBOARD/USBHIDKeyboard.h"
-
-
-  void setup() {
-    USBInit();
-  }
-
-  void loop() {
-
-
-    while (USBSerial_available()) {
-      char serialChar = USBSerial_read();
-      if ((serialChar != '\n') && (serialChar != '\r') ) {
-        USBSerial_print_s("Recived:");
-        USBSerial_println_c(serialChar);
-        USBSerial_print_s("Sending next character....");
-        USBSerial_println_c(serialChar+1);
-        USBSerial_flush();
-        delay(500);
-        Keyboard_write(serialChar+1);
-      }
-    }
-  }
-
+  ```cpp reference
+  https://github.com/Noteolvides/CubeTouch/blob/main/Examples/CDC_KEYBOARD/CDC_KEYBOARD.ino
   ```
-
 
 </details>
 
@@ -376,46 +108,9 @@ You can send the character B, or connect the pin 11 to GND.
 <details>
   <summary>Check the code 🖥</summary>
 
-
-  ```cpp title="CustomBootloader/CustomBootloader.ino"
-  /*
-    Custom Botloader
-
-    A simple example that shows how to jump to the bootloader address to make it reprogrammable.
-    You can send the character B, or connect the pin 11 to GND.
-
-    created 2022
-    by Noteolvides for use with CH55xduino
-
-    This example code is in the public domain.
-  */
-
-  void jump_to_bootloader() {
-    USB_INT_EN = 0;   // USB interrupt disable
-    USB_CTRL = 0x06;  // USB base control Reset
-    delay(100);
-    EA = 0;                    // Disable all interrupts
-    __asm__("lcall #0x3800");  // Jump to bootloader code
-    while (1);
-  }
-
-  void setup() {
-    pinMode(11, INPUT_PULLUP);
-  }
-
-  void loop() {
-    while (USBSerial_available()) {
-      char serialChar = USBSerial_read();
-      char inputUP = digitalRead(11);
-      if (serialChar == 'B' || inputUP == 0) {
-        jump_to_bootloader();
-      }
-    }
-  }
-
-
+  ```cpp reference
+  https://github.com/Noteolvides/CubeTouch/blob/main/Examples/CustomBootloader/CustomBootloader.ino
   ```
-
 
 </details>
 
