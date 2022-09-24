@@ -52,6 +52,11 @@ the bootloader device.
 
 SUBSYSTEM=="usb", ATTRS{idVendor}=="4348", ATTRS{idProduct}=="55e0", MODE="0666"
 ```
+and execute 
+
+```bash
+sudo usermod -a -G dialout $USER
+```
 
 ### For windows Users.
 
