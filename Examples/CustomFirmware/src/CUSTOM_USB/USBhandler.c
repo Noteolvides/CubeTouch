@@ -16,6 +16,9 @@ __xdata __at (EP1_ADDR) uint8_t  Ep1Buffer[8];       //on page 47 of data sheet,
 __xdata __at (EP2_ADDR) uint8_t  Ep2Buffer[128];     //IN and OUT buffer, must be even address
 __xdata __at (EP3_ADDR) uint8_t  Ep3Buffer[64];
 
+#if (EP3_ADDR + 64) > USER_USB_RAM
+#error "This example needs more USB ram. Increase this setting in menu."
+#endif
 
 
 volatile __xdata uint8_t UpPoint1_Busy = 0;  // Flag of whether upload pointer is busy

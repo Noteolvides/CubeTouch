@@ -1,5 +1,5 @@
 #include "Mapping.h"
-#include "src/CDC_KEYBOARD/USBHIDKeyboard.h"
+#include "src/CUSTOM_USB/USBHIDKeyboard.h"
 
 #define Key_press(x) \
   if (x != 0)        \
