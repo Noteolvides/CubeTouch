@@ -1,5 +1,5 @@
 #include "Mapping.h"
-#include "src/CDC_KEYBOARD/USBHIDKeyboard.h"
+#include "src/CUSTOM_USB/USBHIDKeyboard.h"
 
 #define Key_press(x) \
   if (x != 0)        \
@@ -27,7 +27,7 @@ void makeRainBow() {
 }
 
 void sayHelloWorld() {
-  Keyboard_write_string("CubeTouch is cool\0");
+  Keyboard_write_string("cubetouch.noteolvid.es\0");
 }
 
 void makeEffect(uint8_t i) {

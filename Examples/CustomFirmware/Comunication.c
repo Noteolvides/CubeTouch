@@ -1,6 +1,6 @@
 #include "Comunication.h"
 #include "Mapping.h"
-#include "src/CDC_KEYBOARD/USBCDC.h"
+#include "src/CUSTOM_USB/USBCDC.h"
 
 void initComunication() {
   USBInit();
