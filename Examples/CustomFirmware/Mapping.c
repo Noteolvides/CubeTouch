@@ -41,9 +41,13 @@ void makeEffect(uint8_t i) {
 
 void sendKeys(uint8_t i) {
   Key_press(dataKeys[i].firstKey);
+  delay(10);
   Key_press(dataKeys[i].secondKey);
+  delay(10);
   Key_press(dataKeys[i].thirdKey);
+  delay(10);
   Keyboard_releaseAll();
+  delay(10);
 }
 
 void readFaceROM(uint8_t face){

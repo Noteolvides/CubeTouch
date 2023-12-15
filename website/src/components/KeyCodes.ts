@@ -39,7 +39,7 @@ export const Letters: Array<Option> = [
     {label: "q", value: 0x14},
     {label: "r", value: 0x15},
     {label: "s", value: 0x16},
-    {label: "y", value: 0x17},
+    {label: "t", value: 0x17},
     {label: "u", value: 0x18},
     {label: "v", value: 0x19},
     {label: "w", value: 0x1a},
