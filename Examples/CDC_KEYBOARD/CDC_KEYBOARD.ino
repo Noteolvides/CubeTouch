@@ -12,11 +12,11 @@
 
 #ifndef USER_USB_RAM
 #error "This example needs to be compiled with a USER USB setting"
-#error "Tools--> USB Settings--> USER CODE w/148 USB Ram"
+#error "Tools--> USB Settings--> USER CODE w/266 USB Ram"
 #endif
 
-#include "src/CDC_KEYBOARD/USBCDC.h"
-#include "src/CDC_KEYBOARD/USBHIDKeyboard.h"
+#include "src/CUSTOM_USB/USBCDC.h"
+#include "src/CUSTOM_USB/USBHIDKeyboard.h"
 
 
 void setup() {
