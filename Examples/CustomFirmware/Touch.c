@@ -44,17 +44,6 @@ void runTouch(unsigned long actualTime) {
     uint8_t touchResult = TouchKey_Get();
     for (uint8_t i = 0; i < 5; i++) {
       bool active = touchResult & (1 << (i+1));
-      USBSerial_print("TIN");
-      USBSerial_print(i);
-      if (stateButtons[i].history == RELEASED) {
-        USBSerial_print(" _ ");
-      } 
-      if (stateButtons[i].history == HOLDING) {
-        USBSerial_print(" X ");
-      } 
-      if (stateButtons[i].history == LONG_HOLD) {
-        USBSerial_print(" Y ");
-      } 
       switch (stateButtons[i].history) {
         case RELEASED:  // Not presed before
           if (!active)
@@ -86,6 +75,5 @@ void runTouch(unsigned long actualTime) {
           break;
       }
     }
-    USBSerial_println();
   }
 }
