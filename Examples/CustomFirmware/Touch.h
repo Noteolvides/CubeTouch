@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include <Arduino.h>
+#include <TouchKey.h>
 
 
 void initTouch();

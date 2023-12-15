@@ -19,6 +19,7 @@ extern __xdata uint8_t ledsWaitTime;
 void initLeds();
 void runLeds(unsigned long actualTime);
 
+void setAll(uint8_t r, uint8_t g, uint8_t b);
 void showStrip();
 
 #endif

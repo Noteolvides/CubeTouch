@@ -20,36 +20,6 @@ uint8_t g;
 uint8_t b;
 uint8_t i;
 uint8_t j;
-uint8_t blinkLed;
-
-#define POLYMASK_32 0xb4bcd35c
-#define POLYMASK_31 0x7a5bc2e3
-uint32_t lfsr32;
-uint32_t lfsr31;
-
-int shift_lsfr(uint32_t* lfsr, uint32_t polynomial_mask)
-{
-    int feedback = *lfsr & 1;
-    *lfsr >>= 1;
-    if (feedback) {
-        *lfsr ^= polynomial_mask;
-    }
-    return *lfsr;
-}
-
-void init()
-{
-    lfsr32 = 0xabcde;
-    lfsr31 = 0x23456789;
-}
-
-uint32_t get_random()
-{
-    shift_lsfr(&lfsr32, POLYMASK_32);
-    uint32_t a = shift_lsfr(&lfsr32, POLYMASK_32);
-    uint32_t b = shift_lsfr(&lfsr31, POLYMASK_31);
-    return (a ^ b) & 0xffff;
-}
 
 void showStrip(){
   neopixel_show_P3_4(ledData, NUM_BYTES);
@@ -97,15 +67,6 @@ void runLeds(unsigned long actualTime) {
         for (i = 0; i < NUM_LEDS; i++) {
           Wheel(((i * 256 / 6) + j) & 255);
           set_pixel_for_GRB_LED(ledData, i, g, r, b);
-        }
-        showStrip();  // Possible to use other pins.
-        if (j++ == 255)
-          j = 0;
-        break;
-      case LEDS_RAINBOW_BW:
-        for (i = 0; i < NUM_LEDS; i++) {
-          Wheel(((i * 256 / 6) + j) & 255);
-          set_pixel_for_GRB_LED(ledData, i, g, g, g);
         }
         showStrip();  // Possible to use other pins.
         if (j++ == 255)
