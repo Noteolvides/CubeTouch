@@ -1,4 +1,5 @@
 #include "Mapping.h"
+#include "Touch.h"
 #include <TouchKey.h>
 
 enum states {
@@ -15,7 +16,7 @@ typedef struct {  // Check declaration of typedef
 __xdata stateBtn stateButtons[5];  // Back,Right,Left,Front,Top
 __xdata uint8_t idleTouchValue[5];
 
-#define DELAY 10
+#define DELAY 1
 #define LOONG_PRESS 2000
 
 void initTouch() {
@@ -34,6 +35,8 @@ void initTouch() {
 
     TouchKey_SetTouchThreshold(100);  //Bigger touch pad can use a bigger value
     TouchKey_SetReleaseThreshold(80); //Smaller than touch threshold
+    delay(2000);
+    TouchKey_Process();
 }
 
 unsigned long lastTimeTouch;

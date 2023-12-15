@@ -14,20 +14,26 @@ void sendKeys(uint8_t i);
 
 // Back,Right,Left,Front,Top
 __xdata KeyMapping dataKeys[5] = {
-    {0, 0, 0, 0x00, 0x00, 0xFF, sendKeys, dummyFunction, makeEffect},   // Back
-    {0, 0, 0, 0x00, 0xFF, 0x00, sendKeys, dummyFunction, makeEffect},   // Right
-    {0, 0, 0, 0xFF, 0x00, 0x00, sendKeys, dummyFunction, makeEffect},   // Left
-    {0, 0, 0, 0xff, 0xff, 0xff, sendKeys, sayHelloWorld, makeEffect},   // Front
-    {0, 0, 0, 0x80, 0x00, 0x80, sendKeys, makeRainBow, makeEffect}      // Top
+    {0, 0, 0, 0x00, 0x00, 0xFF, sendKeys, makeRainBowBW, makeEffect},   // Back
+    {0, 0, 0, 0x00, 0xFF, 0x00, sendKeys, makeRainBow,   makeEffect},   // Right
+    {0, 0, 0, 0xFF, 0x00, 0x00, sendKeys, makeRainBowBW, makeEffect},   // Left
+    {0, 0, 0, 0xff, 0xff, 0xff, sendKeys, makeBlink,     makeEffect},   // Front
+    {0, 0, 0, 0x80, 0x00, 0x80, sendKeys, goToUrl,       makeEffect}    // Top
 };
+
+void makeRainBowBW() {
+  stateLeds = LEDS_RAINBOW_BW;
+  ledsWaitTime = 25;
+}
 
 void makeRainBow() {
   stateLeds = LEDS_RAINBOW;
-  ledsWaitTime = 10;
+  ledsWaitTime = 25;
 }
 
-void sayHelloWorld() {
-  Keyboard_write_string("cubetouch.noteolvid.es\0");
+void goToUrl() {
+  Keyboard_write_string("cubetouch.noteolvid.es");
+  makeRainBow();
 }
 
 void makeEffect(uint8_t i) {
