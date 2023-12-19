@@ -19,7 +19,7 @@ function HomepageHeader() {
                 <div className={styles.buttons}>
                     <Link
                         className="button button--outline button--secondary button--lg"
-                        href="https://www.tindie.com">
+                        href="https://www.tindie.com/products/26778/">
                         Buy your CubeTouch now!<p style={{marginBottom:"0"}}>🥳</p>
                     </Link>
                 </div>
