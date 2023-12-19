@@ -21,7 +21,6 @@
 #include "Mapping.h"
 
 void setup() {
-
   initComunication();
   initLeds();
   initTouch();

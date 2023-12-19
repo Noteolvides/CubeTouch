@@ -64,7 +64,7 @@ void initMapping(){
   readFaceROM(1);
   readFaceROM(2);
   readFaceROM(3);
-  readFaceROM(5);
+  readFaceROM(4);
 
   stateLeds = LEDS_FADEIN_INIT;
   selectedRed = 0xff;
