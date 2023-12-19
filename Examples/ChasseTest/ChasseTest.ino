@@ -10,6 +10,11 @@
 
 #include <WS2812.h>
 
+#ifdef USER_USB_RAM
+#error "This example needs to be compiled with a Default CDC setting"
+#error "Tools--> USB Settings--> Default CDC"
+#endif
+
 #define NUM_LEDS 6
 #define COLOR_PER_LEDS 3
 #define NUM_BYTES (NUM_LEDS*COLOR_PER_LEDS)

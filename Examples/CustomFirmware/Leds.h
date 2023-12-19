@@ -7,7 +7,7 @@
 
 
 
-enum StatesLeds { LEDS_IDLE, LEDS_RAINBOW, LEDS_FADEIN_INIT, LEDS_FADEIN, LEDS_FADEOUT_INIT, LEDS_FADEOUT };
+enum StatesLeds { LEDS_IDLE, LEDS_RAINBOW, LEDS_RAINBOW_BW, LEDS_FADEIN_INIT, LEDS_FADEIN, LEDS_FADEOUT_INIT, LEDS_FADEOUT };
 
 extern __xdata uint8_t selectedRed;
 extern __xdata uint8_t selectedGreen;
@@ -19,6 +19,7 @@ extern __xdata uint8_t ledsWaitTime;
 void initLeds();
 void runLeds(unsigned long actualTime);
 
+void setAll(uint8_t r, uint8_t g, uint8_t b);
 void showStrip();
 
 #endif

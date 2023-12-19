@@ -16,7 +16,7 @@ __code USB_Descriptor_Device_t DeviceDescriptor = {
     .Endpoint0Size = DEFAULT_ENDP0_SIZE,
 
     .VendorID = 0x1209,
-    .ProductID = 0xC6BE,
+    .ProductID = 0xc550,
     .ReleaseNumber = VERSION_BCD(1, 0, 1),
 
     .ManufacturerStrIndex = 1,
@@ -220,23 +220,42 @@ __code uint8_t ReportDescriptor[] = {
 };
 
 // String Descriptors
-__code uint8_t LanguageDescriptor[] = {0x04, 0x03, 0x09, 0x04}; // Language Descriptor
+__code uint8_t LanguageDescriptor[] = {0x04, 0x03, 0x09,
+                                       0x04}; // Language Descriptor
 __code uint16_t SerialDescriptor[] = {
     // Serial String Descriptor
-    (((4 + 1) * 2) | (DTYPE_String << 8)), 'C', 'T', '0', '1',
+    (((5 + 1) * 2) | (DTYPE_String << 8)), 'C', 'H', '5', '5', 'x',
 };
 __code uint16_t ProductDescriptor[] = {
     // Produce String Descriptor
     (((10 + 1) * 2) | (DTYPE_String << 8)),
-    'C','u','b','e',' ','T','o','u','c','h',
+    'C',
+    'H',
+    '5',
+    '5',
+    'x',
+    'd',
+    'u',
+    'i',
+    'n',
+    'o',
 };
 
 __code uint16_t CDCDescriptor[] = {
-    (((8 + 1) * 2) | (DTYPE_String << 8)),
-    'C','D','C',' ','C','u','b','e',
+    (((10 + 1) * 2) | (DTYPE_String << 8)),
+    'C',
+    'D',
+    'C',
+    ' ',
+    'S',
+    'e',
+    'r',
+    'i',
+    'a',
+    'l',
 };
 
 __code uint16_t ManufacturerDescriptor[] = {
     // SDCC is little endian
-    (((11 + 1) * 2) | (DTYPE_String << 8)), 'N','o','t','e','o','l','v','i','d','e','s',
+    (((6 + 1) * 2) | (DTYPE_String << 8)), 'D', 'e', 'q', 'i', 'n', 'g',
 };

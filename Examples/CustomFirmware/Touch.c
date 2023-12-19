@@ -1,7 +1,8 @@
 #include "Mapping.h"
+#include "Leds.h"
 #define TouchKeyQueryCyl2ms() {TKEY_CTRL |= bTKC_2MS;}                         //Touch button sampling period setting 2ms
 
-#define KEY_ACT              2500
+#define KEY_ACT              1000
 
 enum states {
   RELEASED,
@@ -15,22 +16,25 @@ typedef struct {  // Check declaration of typedef
 } stateBtn;
 
 __xdata stateBtn stateButtons[5];  // Back,Right,Left,Front,Top
-__xdata uint8_t idleTouchValue[5];
+__xdata int16_t idleTouchValue[5];
 
 #define DELAY 10
-#define LOONG_PRESS 2000
+#define LOONG_PRESS 500
 
 
 void touchBegin(){
-  delay(1000);
-  for (uint8_t i = 0; i < 5; i++) {
-      TKEY_CTRL = TKEY_CTRL & 0xF8 | (2 + i);
-      while((TKEY_CTRL&bTKC_IF) == 0);
-      idleTouchValue[i] = TKEY_DAT;
-  }
-
   P1_DIR_PU &= 0x0C;
-  TouchKeyQueryCyl2ms();
+  setAll(255,0,0);
+  showStrip();
+  delay(2000);
+  for (uint8_t j = 0; j < 10; j++) {
+    for (uint8_t i = 0; i < 5; i++) {
+        TKEY_CTRL = TKEY_CTRL & 0xF8 | (2 + i);
+        while((TKEY_CTRL&bTKC_IF) == 0);
+        idleTouchValue[i] = TKEY_DAT;
+    }
+  }
+  
 }
 
 void initTouch() {
@@ -44,22 +48,22 @@ void initTouch() {
 
 unsigned long lastTimeTouch;
 void runTouch(unsigned long actualTime) {
-  if (actualTime - lastTimeTouch > 9) {
+  if (actualTime - lastTimeTouch >= DELAY) {
     lastTimeTouch = actualTime;
     for (uint8_t i = 0; i < 5; i++) {
       TKEY_CTRL = TKEY_CTRL & 0xF8 | (2 + i);
       while((TKEY_CTRL&bTKC_IF) == 0);                                          
       int16_t touchResult = TKEY_DAT;
-      touchResult=(abs(idleTouchValue[i]-touchResult)>KEY_ACT);
+      bool active=(abs(touchResult-idleTouchValue[i])>KEY_ACT);
       switch (stateButtons[i].history) {
         case RELEASED:  // Not presed before
-          if (touchResult)
+          if (!active)
             break;  // Not touched
           stateButtons[i].history = HOLDING;  // Touch detected
           stateButtons[i].downTime += DELAY;
           break;
         case HOLDING:                       // Touch detected before
-          if (touchResult) {  // Is now relesed
+          if (!active) {  // Is now relesed
             stateButtons[i].downTime = 0;
             stateButtons[i].history = RELEASED;
             dataKeys[i].simpleTouchFunction(i);
@@ -74,7 +78,7 @@ void runTouch(unsigned long actualTime) {
           }
           break;
         case LONG_HOLD:
-          if (touchResult) {
+          if (!active) {
             stateButtons[i].history = RELEASED;  // Have to wait to long press is released
           }
           break;

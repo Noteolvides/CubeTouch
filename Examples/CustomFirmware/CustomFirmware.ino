@@ -12,7 +12,7 @@
 
 #ifndef USER_USB_RAM
 #error "This example needs to be compiled with a USER USB setting"
-#error "Tools--> USB Settings--> USER CODE w/148 USB Ram"
+#error "Tools--> USB Settings--> USER CODE w/266 USB Ram"
 #endif
 
 #include "Leds.h"
@@ -21,7 +21,6 @@
 #include "Mapping.h"
 
 void setup() {
-
   initComunication();
   initLeds();
   initTouch();

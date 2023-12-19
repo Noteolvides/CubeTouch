@@ -1,4 +1,5 @@
 #include "Leds.h"
+#include "Arduino.h"
 
 #define NUM_LEDS 6
 #define COLOR_PER_LEDS 3
@@ -20,12 +21,12 @@ uint8_t b;
 uint8_t i;
 uint8_t j;
 
-
 void showStrip(){
   neopixel_show_P3_4(ledData, NUM_BYTES);
 } 
 
 void initLeds() {
+  init();
   pinMode(34, OUTPUT);
 }
 
