@@ -122,7 +122,7 @@ const config = {
             items: [
               {
                 label: 'Tindie',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                href: 'https://www.tindie.com/products/26778/',
               },
             ],
           },
