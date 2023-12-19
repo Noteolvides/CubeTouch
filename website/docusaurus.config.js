@@ -74,7 +74,7 @@ const config = {
             to: '/manual'
           },
           {
-            href: 'https://github.com/noteolvides/touchCube',
+            href: 'https://github.com/noteolvides/cubetouch',
             label: 'GitHub',
             position: 'right',
           },
