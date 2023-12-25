@@ -28,6 +28,8 @@ void makeRainBow() {
 
 void goToUrl() {
   Keyboard_write_string("cubetouch.noteolvid.es");
+  delay(10);
+  Keyboard_releaseAll();
   makeRainBow();
 }
 
