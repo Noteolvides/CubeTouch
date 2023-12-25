@@ -170,28 +170,36 @@ const MainContent = () => {
         dataToSend[0] = "D".charCodeAt(0);
         context.sendMessage(dataToSend);
     }, [])
-    const sendData = () => {
-        let dataToSend = new Uint8Array(8);
-        dataToSend[0] = "C".charCodeAt(0);
-        dataToSend[1] = indexFace;
-        const face = faces[indexFace]
-        const colorInt = hexToRgb(face.color);
-        dataToSend[2] = face.firstValue.value;
-        dataToSend[3] = face.secondValue.value;
-        dataToSend[4] = face.thirdValue.value;
-        dataToSend[5] = colorInt?.r;
-        dataToSend[6] = colorInt?.g;
-        dataToSend[7] = colorInt?.b;
-        console.log(dataToSend);
-        context.sendMessage(dataToSend).then(() => {
-            dataToSend[0] = "D".charCodeAt(0);
-            context.sendMessage(dataToSend);
-            setSuccess(true);
-            setTimeout(function () {
-                console.log(context.portState);
-                setSuccess(false)
-            }, 4000);
-        });
+    const sendData = async () => {
+        function sendFace(i: number) {
+            let dataToSend = new Uint8Array(8);
+            dataToSend[0] = "C".charCodeAt(0);
+            dataToSend[1] = i;
+            const face = faces[i]
+            const colorInt = hexToRgb(face.color);
+            dataToSend[2] = face.firstValue.value;
+            dataToSend[3] = face.secondValue.value;
+            dataToSend[4] = face.thirdValue.value;
+            dataToSend[5] = colorInt?.r;
+            dataToSend[6] = colorInt?.g;
+            dataToSend[7] = colorInt?.b;
+            console.log(dataToSend);
+            return dataToSend;
+        }
+
+        for (let i = 0; i < faces.length; i++) {
+
+            let dataToSend = sendFace(i);
+            await context.sendMessage(dataToSend);
+        }
+        let getData = new Uint8Array(1);
+        getData[0] = "D".charCodeAt(0);
+        await context.sendMessage(getData);
+        setSuccess(true);
+        setTimeout(function () {
+            console.log(context.portState);
+            setSuccess(false)
+        }, 4000);
     }
     return (
         <section>
@@ -268,7 +276,8 @@ const LayoutPage = () => {
             );
         } else {
             await context.disconnect().then((result) => {
-                setConnected(!result)
+                window.location.reload();
+                setConnected(!result);
             });
         }
     }
